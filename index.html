@@ -3,174 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>নামঘৰ ডিজিটেল ড্যাশবৰ্ড / Namghar Dashboard</title>
-    <script src="https://tailwindcss.com"></script>
+    <title>SRI SRI SANKARDEV NAMGHAR TREASURY</title>
+    <!-- Tailwind CSS Integration -->
+    <link href="https://cloudflare.com" rel="stylesheet">
     <style>
         @import url('https://googleapis.com');
-        body { font-family: 'Poppins', sans-serif; }
+        body { font-family: 'Inter', sans-serif; background-color: #0b0f14; color: #adbac7; }
+        .premium-card { background-color: #151b22; border: 1px solid #30363d; }
+        .text-main { color: #f0f6fc; }
+        .font-mono-custom { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen pb-10">
+<body class="min-h-screen pb-12">
 
-    <!-- Top Navigation / Header -->
-    <header class="bg-indigo-900 text-white p-4 shadow-md sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center px-2">
-            <div class="flex items-center space-x-3">
-                <div id="namgharLogo" class="w-10 h-10 bg-amber-400 rounded-full flex items-center justify-center font-bold text-indigo-900 text-xl shadow-inner">ন</div>
-                <h1 id="namgharName" class="text-lg font-bold tracking-wide">নামঘৰ ডিজিটেল ড্যাশবৰ্ড</h1>
-            </div>
-            <!-- Language Switcher -->
-            <button id="langBtn" onclick="toggleLanguage()" class="bg-amber-400 hover:bg-amber-500 text-indigo-950 font-semibold px-3 py-1.5 rounded-lg text-sm shadow transition">
-                English
-            </button>
-        </div>
-    </header>
+    <!-- 🟢 TOP ALERT GREEN BAR -->
+    <div class="bg-[#0f2d19] text-[#56d364] text-[11px] font-medium py-2 px-4 border-b border-[#24432e] text-center tracking-wide">
+        🟢 Public Raij View Live Transactions • Read-Only Access for Village Members
+    </div>
 
-    <!-- Main Container -->
-    <main class="container mx-auto px-4 mt-6 max-w-md">
-
-        <!-- GRAND TOTAL CARD -->
-        <div class="bg-gradient-to-br from-indigo-700 to-purple-800 text-white p-6 rounded-2xl shadow-lg mb-6 text-center relative overflow-hidden">
-            <p id="lblGrandTotal" class="text-sm uppercase tracking-wider text-indigo-200 font-semibold">সৰ্বমুঠ পুঁজি (Grand Total Amount)</p>
-            <h2 id="valGrandTotal" class="text-3xl font-bold mt-2 text-amber-300">₹ ১,৭৫,০০০</h2>
-            <button id="btnEditNameLogo" onclick="openAdminModal('namghar')" class="absolute top-2 right-2 bg-white/20 p-1.5 rounded-full hover:bg-white/30 text-xs hidden admin-element">✏️</button>
-        </div>
-
-        <!-- THREE LIVE BALANCE CARDS -->
-        <div class="grid grid-cols-1 gap-4 mb-8">
-            <!-- Bank Account Balance -->
-            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex justify-between items-center relative">
-                <div>
-                    <p id="lblBank" class="text-xs text-gray-500 font-medium">বেংক একাউণ্টৰ ব্যালেন্স (Bank Account)</p>
-                    <h3 id="valBank" class="text-lg font-bold text-gray-800 mt-1">₹ ১,২০,০০০</h3>
+    <!-- MAIN CONTAINER -->
+    <div class="max-w-5xl mx-auto px-4 mt-4">
+        
+        <!-- HEADER / NAVIGATION MENU -->
+        <header class="premium-card rounded-2xl p-4 mb-5 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+            <div class="flex items-center space-x-3.5">
+                <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center font-bold text-white text-xl shadow-lg border border-amber-400/30">
+                    🕉️
                 </div>
-                <span class="text-2xl">🏦</span>
-                <button onclick="openAdminModal('bank')" class="absolute top-1 right-1 text-xs text-indigo-600 hidden admin-element">✏️</button>
-            </div>
-
-            <!-- Cash in Hand -->
-            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex justify-between items-center relative">
                 <div>
-                    <p id="lblCash" class="text-xs text-gray-500 font-medium">হাতত থকা নগদ ধন (Cash in Hand)</p>
-                    <h3 id="valCash" class="text-lg font-bold text-gray-800 mt-1">₹ ২৫,০০০</h3>
+                    <h1 class="text-sm font-bold tracking-wide text-main">SRI SRI SANKARDEV NAMGHAR</h1>
+                    <p class="text-[11px] text-gray-400">Bor-Khel Village Assembly • Public Fund Ledger</p>
                 </div>
-                <span class="text-2xl">💵</span>
-                <button onclick="openAdminModal('cash')" class="absolute top-1 right-1 text-xs text-indigo-600 hidden admin-element">✏️</button>
             </div>
 
-            <!-- Government Grant Fund -->
-            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex justify-between items-center relative">
-                <div>
-                    <p id="lblGrant" class="text-xs text-gray-500 font-medium">চৰকাৰী অনুদান পুঁজি (Govt Grant)</p>
-                    <h3 id="valGrant" class="text-lg font-bold text-gray-800 mt-1">₹ ৩০,০০০</h3>
-                </div>
-                <span class="text-2xl">🏛️</span>
-                <button onclick="openAdminModal('grant')" class="absolute top-1 right-1 text-xs text-indigo-600 hidden admin-element">✏️</button>
+            <!-- Top Horizontal Menu Links -->
+            <div class="flex flex-wrap items-center gap-4 text-[11px] font-semibold text-gray-400">
+                <span class="text-amber-500 border-b-2 border-amber-500 pb-1 cursor-pointer">Treasury Dashboard</span>
+                <span class="hover:text-white cursor-pointer">Public Fund Ledger</span>
+                <span class="hover:text-white cursor-pointer">Meetings & Rituals Log</span>
+                <span class="hover:text-white cursor-pointer">Digital Transactions</span>
+                <button id="langBtn" onclick="toggleLanguage()" class="bg-amber-500 hover:bg-amber-600 text-stone-950 font-bold px-2.5 py-1 rounded text-[10px] transition">
+                    English
+                </button>
             </div>
-        </div>
+        </header>
 
-        <!-- PUBLIC FUND LEDGER SECTION -->
-        <section class="mb-8">
-            <div class="flex justify-between items-center mb-4">
-                <h3 id="lblLedgerTitle" class="font-bold text-gray-800 text-base">ৰাজহুৱা পুঁজিৰ খতিয়ান (Ledger)</h3>
-                <button onclick="openAdminModal('addMember')" class="bg-indigo-600 text-white text-xs px-2.5 py-1.5 rounded-lg hidden admin-element">+ সদস্য যোগ কৰক</button>
+        <!-- 📊 CONSOLIDATED TREASURY CARD -->
+        <div class="premium-card rounded-2xl p-6 mb-5 relative overflow-hidden border-t-4 border-amber-500">
+            <div class="flex justify-between items-center text-[10px] text-gray-500 font-bold tracking-wider">
+                <span id="lblSubTitle">SARBAJANIN NAMGHAR ASSETS • CONSOLIDATED TREASURY</span>
+                <span class="font-mono-custom">FY 2026-27 • Live Recent Updates</span>
             </div>
             
-            <!-- Member Cards List -->
-            <div class="space-y-3">
-                <!-- Member 1 -->
-                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center space-x-3 relative">
-                    <div class="w-12 h-12 bg-gray-300 rounded-full overflow-hidden flex-shrink-0 border border-indigo-200">
-                        <span class="w-full h-full flex items-center justify-center text-xl">👤</span>
-                    </div>
-                    <div class="flex-1">
-                        <h4 class="font-bold text-gray-800 text-sm">তৰুণ গগৈ (Tarun Gogoi)</h4>
-                        <div class="flex space-x-2 mt-1 text-xs">
-                            <span class="px-2 py-0.5 rounded bg-green-100 text-green-700 font-medium">2025: Paid</span>
-                            <span class="px-2 py-0.5 rounded bg-red-100 text-red-700 font-medium">2026: Unpaid</span>
-                        </div>
-                        <p class="text-red-600 font-bold text-[11px] mt-1">⚠️ সৰ্বমুঠ বাকী বৰঙণি: ₹ ৫০০</p>
-                    </div>
-                    <button onclick="openAdminModal('editMember')" class="absolute top-2 right-2 text-xs text-gray-400 hidden admin-element">✏️</button>
+            <p id="lblGrandTotal" class="text-xs text-gray-400 mt-2 uppercase font-medium">GRAND TOTAL AVAILABLE TREASURY</p>
+            <div class="flex items-baseline space-x-2.5 mt-1">
+                <h2 class="text-4xl font-extrabold text-white tracking-tight font-mono-custom">₹ ৫,৪৭,৭৫০</h2>
+                <span class="text-[10px] text-green-400 bg-[#0f2d19] px-2.5 py-0.5 rounded-full border border-[#24432e] font-semibold">✓ Verified & Audited</span>
+            </div>
+            
+            <p class="text-[11px] text-gray-400 mt-2 border-t border-gray-800/60 pt-2 leading-relaxed">
+                Aggregated community reserves across SBI Kuwaritola Bank Account, Physical Cash Chest with Bor-Bharali, and State Government Namghar Scheme Grants.
+            </p>
+
+            <!-- Progress Bar Graph Component -->
+            <div class="mt-5">
+                <div class="flex justify-between text-[10px] text-gray-400 font-bold mb-1.5">
+                    <span id="lblComp">TREASURY FUND COMPOSITION</span>
+                    <span class="text-green-400">100% Accounted</span>
+                </div>
+                <div class="w-full h-2.5 bg-gray-800 rounded-full overflow-hidden flex">
+                    <div class="h-full bg-blue-500" style="width: 58%"></div>
+                    <div class="h-full bg-yellow-500" style="width: 8%"></div>
+                    <div class="h-full bg-emerald-500" style="width: 34%"></div>
+                </div>
+                <div class="flex flex-wrap gap-5 mt-3 text-[10px] text-gray-400 font-medium font-mono-custom">
+                    <div class="flex items-center"><span class="w-2.5 h-2.5 bg-blue-500 rounded-full mr-1.5"></span> Bank Account: ₹ 3,18,500 (58%)</div>
+                    <div class="flex items-center"><span class="w-2.5 h-2.5 bg-yellow-500 rounded-full mr-1.5"></span> Cash In Hand: ₹ 44,250 (8%)</div>
+                    <div class="flex items-center"><span class="w-2.5 h-2.5 bg-emerald-500 rounded-full mr-1.5"></span> Govt Grant: ₹ 1,85,000 (34%)</div>
                 </div>
             </div>
-        </section>
 
-        <!-- MEETING LOG & CONSTITUTION BUTTONS -->
-        <div class="grid grid-cols-2 gap-3 mb-6">
-            <button class="bg-white border border-indigo-100 p-3 rounded-xl shadow-sm text-center hover:bg-indigo-50 transition">
-                <span class="block text-xl mb-1">📜</span>
-                <span id="btnConst" class="text-xs font-semibold text-indigo-950">নামঘৰৰ সংবিধান</span>
-            </button>
-            <button class="bg-white border border-indigo-100 p-3 rounded-xl shadow-sm text-center hover:bg-indigo-50 transition">
-                <span class="block text-xl mb-1">📝</span>
-                <span id="btnLog" class="text-xs font-semibold text-indigo-950">কাৰ্যবিৱৰণী বহী</span>
-            </button>
-        </div>
-
-        <!-- ADMIN LOGIN TOGGLE (FOR DEMO/TESTING PURPOSE) -->
-        <div class="text-center mt-8 border-t border-gray-200 pt-4">
-            <button id="adminToggleBtn" onclick="toggleAdminView()" class="text-xs text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full font-medium hover:bg-indigo-100">
-                🔐 এডমিন লগইন কৰক (Switch to Admin)
-            </button>
-        </div>
-
-    </main>
-
-    <!-- UI Translations Script -->
-    <script>
-        let currentLang = 'as';
-        let isAdmin = false;
-
-        const translations = {
-            as: {
-                title: "নামঘৰ ডিজিটেল ড্যাশবৰ্ড",
-                grandTotal: "সৰ্বমুঠ পুঁজি (Grand Total Amount)",
-                bank: "বেংক একাউণ্টৰ ব্যালেন্স (Bank Account)",
-                cash: "হাতত থকা নগদ ধন (Cash in Hand)",
-                grant: "চৰকাৰী অনুদান পুঁজি (Govt Grant)",
-                ledger: "ৰাজহুৱা পুঁজিৰ খতিয়ান (Ledger)",
-                const: "নামঘৰৰ সংবিধান",
-                log: "কাৰ্যবিৱৰণী বহী",
-                adminIn: "🔐 এডমিন লগইন কৰক (Switch to Admin)",
-                adminOut: "🔓 এডমিন লগআউট কৰক (Logout Admin)"
-            },
-            en: {
-                title: "Namghar Digital Dashboard",
-                grandTotal: "Grand Total Amount",
-                bank: "Bank Account Balance",
-                cash: "Cash in Hand",
-                grant: "Government Grant Fund",
-                ledger: "Public Fund Ledger",
-                const: "Namghar Constitution",
-                log: "Meetings & Rituals Log",
-                adminIn: "🔐 Switch to Admin Mode",
-                adminOut: "🔓 Logout Admin Mode"
-            }
-        };
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'as' ? 'en' : 'as';
-            document.getElementById('langBtn').innerText = currentLang === 'as' ? 'English' : 'অসমীয়া';
+            <!-- Village Uncollected Info Banner inside card -->
+            <div class="mt-4 bg-gray-800/40 p-2.5 rounded-xl border border-gray-800 text-[11px] text-gray-400 flex justify-between items-center">
+                <span>🏠 Village Uncollected Dues: <strong class="text-red-400 font-mono-custom">₹ 13,400</strong> pending from Khel households.</span>
+                <span class="text-[10px] bg-gray-800 text-white px-2 py-0.5 rounded cursor-pointer font-bold border border-gray-700">Summary Access Required</span>
+            </div>
             
-            document.getElementById('namgharName').innerText = translations[currentLang].title;
-            document.getElementById('lblGrandTotal').innerText = translations[currentLang].grandTotal;
-            document.getElementById('lblBank').innerText = translations[currentLang].bank;
-            document.getElementById('lblCash').innerText = translations[currentLang].cash;
-            document.getElementById('lblGrant').innerText = translations[currentLang].grant;
-            document.getElementById('lblLedgerTitle').innerText = translations[currentLang].ledger;
-            document.getElementById('btnConst').innerText = translations[currentLang].const;
-            document.getElementById('btnLog').innerText = translations[currentLang].log;
-            document.getElementById('adminToggleBtn').innerText = isAdmin ? translations[currentLang].adminOut : translations[currentLang].adminIn;
-        }
+            <button onclick="openAdminConsole('Main Treasury')" class="absolute top-4 right-4 text-[10px] bg-gray-800 hover:bg-gray-700 text-amber-500 p-1.5 rounded-md hidden admin-element">✏️ Edit</button>
+        </div>
 
-        function toggleAdminView() {
-            isAdmin = !isAdmin;
-            const adminElements = document.querySelectorAll('.admin-element');
-            adminElements.forEach(el => {
-                if (isAdmin) el.classList.remove('hidden');
-                else el.classList.add('hidden');
-            });
-            document.getElementById('adminToggleBtn').innerText = isAdmin ? translations[currentLang].adminOut : translations[currentLang].adminIn;
-            if(isAdmin) alert("Admin Mode Enabled! You can now see edit buttons (✏️).");
-        }
+        <!-- 🏦 THREE SUB-TREASURY CARDS GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            
+            <!-- Card 1: Bank Account -->
+            <div class="premium-card p-5 rounded-2xl relative shadow-md border-b-2 border-blue-500">
+                <div class="flex justify-between items-start">
+                    <span class="text-[9px] text-blue-400 font-bold uppercase tracking-wider">DIRECT INSTITUTIONAL</span>
+                    <span class="text-lg">🏦</span>
+                </div>
+                <h4 id="c1Title" class="text-xs font-bold text-gray-300 mt-2">Bank Account Balance</h4>
+                <p class="text-[10px] text-gray-500 font-mono-custom">SBI A/C: 3824*****173 | 2026 (CY)</p>
+                <h3 class="text-xl font-extrabold text-white mt-1.5 font-mono-custom">₹ ৩,১৮,৫০০</h3>
+                <p class="text-[10px] text-green-400 mt-3 flex items-center">✨ Passbook & Statements Reconciled</p>
+                <div class="mt-2 text-[9px] text-gray-500 flex justify-between">
+                    <span>Custodian: Joint (Satradhikar & Sec)</span>
+                    <span class="font-mono-custom">2026-09-28</span>
+                </div>
+                <button onclick="openAdminConsole('Bank')" class="absolute top-2 right-2 text-[10px] text-amber-500 hidden admin-element">✏️</button>
+            </div>
+
+            <!-- Card 2: Cash in Hand -->
+            <div class="premium-card p-5 rounded-2xl relative shadow-md border-b-2 border-yellow-500">
+                <div class="flex justify-between items-start">
+                    <span class="text-[9px] text-yellow-400 font-bold uppercase tracking-wider">LIQUID PHYSICAL RESERVE</span>
+                    <span class="text-lg">💵</span>
+                </div>
+                <h4 id="c2Title" class="text-xs font-bold text-gray-300 mt-2">Cash in Hand</h4>
+                <p class="text-[10px] text-gray-500">Bharali Physical Chest (Tijori)</p>
+                <h3 class="text-xl font-extrabold text-white mt-1.5 font-mono-custom">₹ ৪৪,২৫০</h3>
+                <p class="text-[10px] text-amber-400 mt-3 flex items-center">⚠️ Physical Cash Safe With Bor-Bharali</p>
+                <div class="mt-2 text-[9px] text-gray-500 flex justify-between">
+                    <span>Custodian: Sri Tarun Saikia</span>
+                    <span>Daily Log Verified</span>
+                </div>
+                <button onclick="openAdminConsole('Cash')" class="absolute top-2 right-2 text-[10px] text-amber-500 hidden admin-element">✏️</button>
+            </div>
+
+            <!-- Card 3: Government Grant -->
+            <div class="premium-card p-5 rounded-2xl relative shadow-md border-b-2 border-emerald-500">
+                <div class="flex justify-between items-start">
+                    <span class="text-[9px] text-emerald-400 font-bold uppercase tracking-wider">EARMARKED PUBLIC SCHEME</span>
+                    <span class="text-lg">🏛️</span>
+                </div>
+                <h4 id="c3Title" class="text-xs font-bold text-gray-300 mt-2">Government Grant Fund</h4>
+                <p class="text-[10px] text-gray-500">Asom Darshan Scheme | Scheme ID 40</p>
+                <h3 class="text-xl font-extrabold text-white mt-1.5 font-mono-custom">₹ ১,৮৫,০০০</h3>
+                <p class="text-[10px] text-gray-400 mt-3 flex items-center">ℹ️ Asset Utilization Sanctioned</p>
+                <div class="mt-2 text-[9px] text-gray-500 flex justify-between">
+                    <span>Purpose: Gold & Roof Insulation</span>
+                    <span>Govt Audited</span>
+                </div>
+                <button onclick="openAdminConsole('Grant')" class="absolute top-2 right-2 text-[10px] text-amber-500 hidden admin-element">✏️</button>
+            </div>
+        </div>
+
+        <!-- 📜 BOTTOM WIDGET BUTTONS LINKS -->
